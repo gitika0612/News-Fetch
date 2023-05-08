@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+#searchInput {
+    padding: 5px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 3px;
+}
+
+#searchBtn {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.output {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vw;
+    justify-content: center;
+}
+
+  
+  

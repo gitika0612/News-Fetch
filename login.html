@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>login page</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="login.css">  
+  </head>
+  <body>
+    <div class="login">
+        <h3>Login into your account</h3>
+        <div class='container'>
+           <form id='login-form'>
+            <div class="group">
+				<label for="username">Username</label>
+				<input type="text" id="username">
+				<i class="fa fa-envelope"></i>
+			</div>	
+            <div class="group">
+				<label for="password">Password</label>
+				<input type="password" id="password">
+				<i class="fa fa-key"></i>
+			</div>	
+            <div class="btn">
+                <button id='submit' type='submit'> <i class="fa fa-send"></i> LogIn</button>
+            </div>
+            <div id='error'>
+                <p></p>
+            </div>
+           </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var errorMsg = document.getElementById('error');
+
+            if (username.trim() === '' && password.trim() === '') {
+                errorMsg.textContent = 'Please enter both username and password';
+                return;
+            }
+
+            function validatePassword(password) {
+                var passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
+                return passwordPattern.test(password);
+            }
+
+            if (!validatePassword(password)) {
+                errorMsg.textContent = 'Invalid password. Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.';
+                return;
+            }
+
+            if (username === 'admin' && password === 'Password@1') {
+                window.location.href = 'admin.html';
+            } else {
+                errorMsg.textContent = 'Invalid Username and Password';
+            }
+        })
+    </script>
+  </body>  
+</html>
